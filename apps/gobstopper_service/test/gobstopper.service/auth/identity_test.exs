@@ -128,7 +128,7 @@ defmodule Gobstopper.Service.Auth.IdentityTest do
         end
     end
 
-    describe "credential?/2" do
+    describe "all_credentials/1" do
         test "retrieving all credentials associated with a non-existent identity" do
             assert { :error, "Invalid token" } == Identity.all_credentials(nil)
         end
