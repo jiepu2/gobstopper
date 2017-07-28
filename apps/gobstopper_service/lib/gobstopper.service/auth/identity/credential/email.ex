@@ -14,6 +14,7 @@ defmodule Gobstopper.Service.Auth.Identity.Credential.Email do
 
     @type uuid :: String.t
 
+    @impl Credential
     def create(identity, { email, pass }) do
         with { :credential, { :ok, _ } } <- { :credential, Gobstopper.Service.Repo.insert(Credential.Email.Model.insert_changeset(%Credential.Email.Model{}, %{ password: pass, identity_id: identity.id })) },
              { :email, { :ok, _ } } <- { :email, new_email(identity.identity, email) } do
@@ -28,6 +29,7 @@ defmodule Gobstopper.Service.Auth.Identity.Credential.Email do
         end
     end
 
+    @impl Credential
     def change(identity, { email, pass }) do
         with { :credential, credential = %Credential.Email.Model{} } <- { :credential, Gobstopper.Service.Repo.get_by(Credential.Email.Model, identity_id: identity.id) },
              { :email, { { :ok, prev_email }, { :ok, source } } } <- { :email, set_email(identity.identity, email) } do
@@ -61,6 +63,7 @@ defmodule Gobstopper.Service.Auth.Identity.Credential.Email do
         end
     end
 
+    @impl Credential
     def revoke(identity) do
         with { :credential, credential = %Credential.Email.Model{} } <- { :credential, Gobstopper.Service.Repo.get_by(Credential.Email.Model, identity_id: identity.id) },
              { :delete, { :ok, _ } } <- { :delete, Gobstopper.Service.Repo.delete(credential) } do
@@ -73,10 +76,12 @@ defmodule Gobstopper.Service.Auth.Identity.Credential.Email do
         end
     end
 
+    @impl Credential
     def credential?(identity) do
         nil != Gobstopper.Service.Repo.get_by(Credential.Email.Model, identity_id: identity.id)
     end
 
+    @impl Credential
     def info(identity) do
         case credential?(identity) do
             false -> { :none, nil }
@@ -88,6 +93,7 @@ defmodule Gobstopper.Service.Auth.Identity.Credential.Email do
         end
     end
 
+    @impl Credential
     def authenticate({ email, pass }) do
         with { :owner, { :ok, id } } <- { :owner, Contact.Email.owner(email) },
              { :primary, { :ok, { _, ^email } } } <- { :primary, Contact.Email.primary_contact(id) },

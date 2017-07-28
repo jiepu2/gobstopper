@@ -7,9 +7,9 @@ defmodule Gobstopper.Service do
         import Supervisor.Spec, warn: false
 
         children = [
-            supervisor(Gobstopper.Service.Repo, []),
-            worker(GuardianDb.ExpiredSweeper, []),
-            worker(Gobstopper.Service.Auth, [])
+            Gobstopper.Service.Repo,
+            GuardianDb.ExpiredSweeper,
+            Gobstopper.Service.Auth
         ]
 
         opts = [strategy: :one_for_one, name: Gobstopper.Service.Supervisor]

@@ -9,7 +9,7 @@ defmodule Gobstopper.Service.Mixfile do
             config_path: "../../config/config.exs",
             deps_path: "../../deps",
             lockfile: "../../mix.lock",
-            elixir: "~> 1.4",
+            elixir: "~> 1.5",
             elixirc_paths: elixirc_paths(Mix.env),
             build_embedded: Mix.env == :prod,
             start_permanent: Mix.env == :prod,
@@ -53,7 +53,7 @@ defmodule Gobstopper.Service.Mixfile do
             { :comeonin, "~> 3.0" },
             { :guardian, "~> 0.14.2" },
             { :guardian_db, "~> 0.8.0" },
-            { :sherbet_api, github: "ScrimpyCat/sherbet", sparse: "apps/sherbet_api" },
+            { :sherbet_api, github: "ZURASTA/sherbet", sparse: "apps/sherbet_api" },
             { :protecto, github: "ScrimpyCat/Protecto" },
             { :defecto, github: "ScrimpyCat/Defecto", only: :test },
             { :sherbet_service, github: "ScrimpyCat/sherbet", sparse: "apps/sherbet_service", only: :test }

@@ -45,7 +45,7 @@ defmodule Gobstopper.API.Mixfile do
     defp deps(false) do
         [
             { :gobstopper_service, path: "../gobstopper_service", only: :test },
-            { :sherbet_service, github: "ScrimpyCat/sherbet", sparse: "apps/sherbet_service", only: :test }
+            { :sherbet_service, github: "ZURASTA/sherbet", sparse: "apps/sherbet_service", only: :test }
         ]
     end
     defp deps(true), do: []
