@@ -3,6 +3,14 @@ defmodule Gobstopper.Service.Auth do
 
     alias Gobstopper.Service.Auth.Identity
 
+    def child_spec(_args) do
+        %{
+            id: __MODULE__,
+            start: { __MODULE__, :start_link, [] },
+            type: :worker
+        }
+    end
+
     def start_link() do
         GenServer.start_link(__MODULE__, [], name: __MODULE__)
     end
