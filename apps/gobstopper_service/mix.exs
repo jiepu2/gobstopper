@@ -53,7 +53,7 @@ defmodule Gobstopper.Service.Mixfile do
             { :comeonin, "~> 3.0" },
             { :guardian, "~> 0.14.2" },
             { :guardian_db, "~> 0.8.0" },
-            { :sherbet_api, github: "ScrimpyCat/sherbet", sparse: "apps/sherbet_api" },
+            { :sherbet_api, github: "ZURASTA/sherbet", sparse: "apps/sherbet_api" },
             { :protecto, github: "ScrimpyCat/Protecto" },
             { :defecto, github: "ScrimpyCat/Defecto", only: :test },
             { :sherbet_service, github: "ScrimpyCat/sherbet", sparse: "apps/sherbet_service", only: :test }
