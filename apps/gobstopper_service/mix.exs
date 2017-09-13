@@ -56,7 +56,8 @@ defmodule Gobstopper.Service.Mixfile do
             { :sherbet_api, github: "ZURASTA/sherbet", sparse: "apps/sherbet_api" },
             { :protecto, github: "ScrimpyCat/Protecto" },
             { :defecto, github: "ScrimpyCat/Defecto", only: :test },
-            { :sherbet_service, github: "ScrimpyCat/sherbet", sparse: "apps/sherbet_service", only: :test }
+            { :sherbet_service, github: "ZURASTA/sherbet", sparse: "apps/sherbet_service", only: :test },
+            { :cake_service, github: "ZURASTA/cake", sparse: "apps/cake_service", only: :test }
         ]
     end
 
