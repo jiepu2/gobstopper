@@ -23,4 +23,4 @@ config :guardian, Guardian,
     serializer: Gobstopper.Service.GuardianSerializer,
     hooks: GuardianDb
 
-import_config "../../../deps/sherbet_service/apps/sherbet_service/config/config.exs"
+import_config Path.join(Mix.Project.deps_path(), "sherbet_service/apps/sherbet_service/config/config.exs")

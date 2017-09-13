@@ -15,6 +15,7 @@ defmodule Gobstopper.API.AuthTest do
         { :ok, token } = Auth.Email.register("foo@bar", "secret")
         assert nil != Auth.verify(token)
         assert :ok == Auth.logout(token)
+        :timer.sleep(100)
         assert nil == Auth.verify(token)
     end
 end
