@@ -52,7 +52,7 @@ defmodule Gobstopper.Service.Auth.IdentityTest do
     end
 
     describe "refresh/1" do
-        test "refresh a non-existent identtiy's token" do
+        test "refresh a non-existent identity's token" do
             assert { :error, "Error refreshing token" } == Identity.refresh(nil)
         end
 
