@@ -47,6 +47,10 @@ defmodule Gobstopper.Service.Auth do
         Task.start(fn -> GenServer.reply(from, Identity.all_credentials(token)) end)
         { :noreply, state }
     end
+    def handle_call({ :refresh, token }, from, state) do
+        Task.start(fn -> GenServer.reply(from, Identity.refresh(token)) end)
+        { :noreply, state }
+    end
 
     def handle_cast({ :logout, token }, state) do
         Task.start(fn -> Identity.logout(token) end)

@@ -25,4 +25,13 @@ defmodule Gobstopper.API.Auth do
     """
     @spec verify(token) :: uuid | nil
     def verify(token), do: GenServer.call(@service, { :verify, token })
+
+    @doc """
+        Refresh an identity's session.
+    """
+    @spec refresh(token) :: :ok
+    def refresh(token) do
+        GenServer.cast(@service, { :refresh, token })
+        :ok
+    end
 end
