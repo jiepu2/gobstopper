@@ -65,13 +65,13 @@ defmodule Gobstopper.Service.Auth.Identity do
     @doc """
         Refresh a token of an identity
 
-        Returns `:ok` on successful refresh. Otherwise returns an error.
+        Returns `{ :ok, token }` on successful refresh. Otherwise returns an error.
     """
-    @spec refresh(String.t) :: :ok | { :error, String.t }
+    @spec refresh(String.t) :: { :ok, String.t } | { :error, String.t }
     def refresh(token) do
         case Guardian.refresh!(token) do
-            :ok -> :ok
-            _ -> { :error, "Error refreshing token"}
+            { :ok, token, _ } -> { :ok, token }
+            _ -> { :error, "Error refreshing token" }
         end
     end
 

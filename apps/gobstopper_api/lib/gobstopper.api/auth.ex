@@ -29,9 +29,8 @@ defmodule Gobstopper.API.Auth do
     @doc """
         Refresh an identity's session.
     """
-    @spec refresh(token) :: :ok
+    @spec refresh(token) :: { :ok, String.t }
     def refresh(token) do
-        GenServer.cast(@service, { :refresh, token })
-        :ok
+        GenServer.call(@service, { :refresh, token })
     end
 end
