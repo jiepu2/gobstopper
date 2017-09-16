@@ -32,7 +32,7 @@ defmodule Gobstopper.API.Auth do
       Returns a new session token and disables the previous one. Otherwise returns
       an error.
     """
-    @spec refresh(token) :: { :ok, uuid }
+    @spec refresh(token) :: { :ok, uuid } | { :error, String.t }
     def refresh(token) do
         GenServer.call(@service, { :refresh, token })
     end
