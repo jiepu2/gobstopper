@@ -28,6 +28,9 @@ defmodule Gobstopper.API.Auth do
 
     @doc """
       Refresh an identity's session.
+
+      Returns a new session token and disables the previous one. Otherwise returns
+      an error.
     """
     @spec refresh(token) :: { :ok, uuid }
     def refresh(token) do

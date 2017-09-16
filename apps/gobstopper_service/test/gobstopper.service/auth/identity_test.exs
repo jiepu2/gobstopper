@@ -51,22 +51,6 @@ defmodule Gobstopper.Service.Auth.IdentityTest do
         end
     end
 
-    describe "refresh/1" do
-        test "refresh a non-existent identity's token" do
-            assert { :error, "Error refreshing token" } == Identity.refresh(nil)
-        end
-
-        test "refresh an identity's token" do
-            identity = Gobstopper.Service.Repo.insert!(Identity.Model.changeset(%Identity.Model{}))
-            { :ok, token, _ } = Guardian.encode_and_sign(identity)
-            assert identity.identity == Identity.verify(token)
-
-            assert { :ok, token2 } = Identity.refresh(token)
-            assert nil == Identity.verify(token)
-            assert identity.identity == Identity.verify(token2)
-        end
-    end
-
     describe "remove/2" do
         test "remove a non-existent identity's email credential" do
             assert { :error, "Invalid token" } == Identity.remove(:email, nil)
@@ -108,6 +92,22 @@ defmodule Gobstopper.Service.Auth.IdentityTest do
             assert { :ok, false } == Identity.credential?(:email, token)
             assert :ok == Identity.logout(token)
             assert { :error, "Invalid token" } == Identity.credential?(:email, token)
+        end
+    end
+
+    describe "refresh/1" do
+        test "refresh a non-existent identity's token" do
+            assert { :error, "Error refreshing token" } == Identity.refresh(nil)
+        end
+
+        test "refresh an identity's token" do
+            identity = Gobstopper.Service.Repo.insert!(Identity.Model.changeset(%Identity.Model{}))
+            { :ok, token, _ } = Guardian.encode_and_sign(identity)
+            assert identity.identity == Identity.verify(token)
+
+            assert { :ok, token2 } = Identity.refresh(token)
+            assert nil == Identity.verify(token)
+            assert identity.identity == Identity.verify(token2)
         end
     end
 
