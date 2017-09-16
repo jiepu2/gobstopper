@@ -61,6 +61,20 @@ defmodule Gobstopper.Service.Auth.Identity do
         end
     end
 
+
+    @doc """
+      Refresh a token of an identity
+
+      Returns `{ :ok, token }` on successful refresh. Otherwise returns an error.
+    """
+    @spec refresh(String.t) :: { :ok, String.t } | { :error, String.t }
+    def refresh(token) do
+        case Guardian.refresh!(token) do
+            { :ok, token, _ } -> { :ok, token }
+            _ -> { :error, "Error refreshing token" }
+        end
+    end
+
     @doc """
       Remove a credential associated with an identity.
 

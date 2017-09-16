@@ -18,4 +18,12 @@ defmodule Gobstopper.API.AuthTest do
         :timer.sleep(100)
         assert nil == Auth.verify(token)
     end
+
+    test "valid token refresh and verify" do
+        { :ok, token } = Auth.Email.register("foo@bar", "secret")
+        identity = Auth.verify(token)
+        assert { :ok, token2 } = Auth.refresh(token)
+        assert nil == Auth.verify(token)
+        assert identity == Auth.verify(token2)
+    end
 end

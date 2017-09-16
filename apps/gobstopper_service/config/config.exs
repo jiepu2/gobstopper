@@ -1,7 +1,7 @@
 use Mix.Config
 
 config :gobstopper_service,
-    ecto_repos: [Gobstopper.Service.Repo] 
+    ecto_repos: [Gobstopper.Service.Repo]
 
 config :guardian_db, GuardianDb,
     repo: Gobstopper.Service.Repo,
