@@ -9,7 +9,7 @@ defmodule Gobstopper.Mixfile do
             deps: deps(),
             dialyzer: [plt_add_deps: :transitive],
             name: "Gobstopper",
-            source_url: "https://github.com/ScrimpyCat/gobstopper",
+            source_url: "https://github.com/ZURASTA/gobstopper",
             docs: [
                 main: "gobstopper",
                 extras: ["README.md": [filename: "gobstopper", title: "Gobstopper"]],
