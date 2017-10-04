@@ -25,6 +25,7 @@ defmodule Gobstopper.Service.Mixfile do
     def application do
         [
             mod: { Gobstopper.Service, [] },
+            applications: [:logger, :oauth2],
             extra_applications: [:logger]
         ]
     end
@@ -53,6 +54,7 @@ defmodule Gobstopper.Service.Mixfile do
             { :comeonin, "~> 3.0" },
             { :guardian, "~> 0.14.2" },
             { :guardian_db, "~> 0.8.0" },
+            { :poison, "~> 3.1" },
             { :sherbet_api, github: "ZURASTA/sherbet", sparse: "apps/sherbet_api" },
             { :protecto, github: "ScrimpyCat/Protecto" },
             { :defecto, github: "ScrimpyCat/Defecto", only: :test },
