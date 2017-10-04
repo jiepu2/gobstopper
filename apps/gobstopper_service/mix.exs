@@ -73,7 +73,6 @@ defmodule Gobstopper.Service.Mixfile do
         [
             "ecto.setup": ["ecto.create", "ecto.migrate"],
             "ecto.reset": ["ecto.drop", "ecto.setup"],
-            "test": ["ecto.drop --quiet", "ecto.create --quiet", "ecto.migrate", "test"]
         ]
     end
 end
