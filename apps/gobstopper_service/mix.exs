@@ -25,7 +25,6 @@ defmodule Gobstopper.Service.Mixfile do
     def application do
         [
             mod: { Gobstopper.Service, [] },
-            applications: [:logger, :oauth2],
             extra_applications: [:logger]
         ]
     end
